@@ -33,3 +33,32 @@ form button{
   border-radius: 5rem;
   color: white;
 }
+.code-group {
+  height: 2rem;
+  margin-bottom: 1.1rem;
+  line-height: 2rem;
+  align-items: center;
+  position: relative;
+}
+.code-group i {
+  width: 4.9rem;
+  float: left;
+  text-align: right;
+  margin-right: 0.2rem;
+  align-items: center;
+  line-height: 2rem;
+}
+.code-group img{
+  width: 4.8rem;
+  height: 2rem;
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  right: 1rem;
+}
+.code-group div{
+  display: inline-block;
+}
+.code-group input{
+  width: 5rem !important;
+}

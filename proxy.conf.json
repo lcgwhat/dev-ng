@@ -1,9 +1,9 @@
 {
   "/api": {
-    "target": "http://localhost:8080",
+    "target": "http://127.0.0.1",
     "sesure": false,
     "pathRewrite": {
-      "^/api": ""
+      "^/api": "oop/frontend/web"
     }
   }
 }

@@ -1,0 +1,32 @@
+<form action="">
+  <div class="form-grop">
+    <i class="fa fa-address-book">用户名</i><label>
+    <input type="text" class="form-control" name="name" [(ngModel)]="model.name" required #name="ngModel">
+  </label>
+  </div>
+
+  <div class="form-grop">
+    <i class="fa fa-camera-retro">密码</i><label>
+    <input type="password" class="form-control" placeholder="密码" name="password"
+           [(ngModel)]="model.password"
+            required #password="ngModel">
+  </label>
+  </div>
+
+  <div class="code-group">
+    <div>
+      <div>
+        <i>验证码</i>
+        <label>
+          <input type="text" [(ngModel)]="model.captca"
+                 placeholder="验证码" name="captca"
+          >
+        </label></div>
+      <img [src]="codeImgSrc" (click)="getCaptca()" alt="获取">
+    </div>
+  </div>
+  <div class="form-grop">
+    <button>确定</button>
+  </div>
+
+</form>
