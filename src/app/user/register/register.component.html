@@ -1,28 +1,43 @@
 <form action="">
   <div class="form-grop">
     <i class="fa fa-address-book">用户名</i><label>
-    <input type="text" class="form-control" name="name" [(ngModel)]="model.name" required #name="ngModel">
+    <input type="text" class="form-control" name="name" [ngModelOptions]="{updateOn: 'blur'}"
+           [(ngModel)]="model.name" required #name="ngModel" appPhoneValidator
+    >
   </label>
+    <div class="error" [hidden]="name.valid || name.untouched">
+      <span *ngIf="name?.errors?.required">请输入用户名</span>
+      <span *ngIf="name?.errors?.existName">用户名已存在</span>
+    </div>
   </div>
 
   <div class="form-grop">
     <i class="fa fa-camera-retro">密码</i><label>
-    <input type="password" class="form-control" placeholder="密码" name="password"
+    <input type="password" class="form-control" placeholder="密码"
+           name="password"
            [(ngModel)]="model.password"
             required #password="ngModel">
   </label>
+    <div class="error" [hidden]="password.valid || password.untouched">
+      <span *ngIf="password?.errors?.required">请输入密码</span>
+    </div>
   </div>
 
   <div class="code-group">
-    <div>
+    <div class="ds">
       <div>
         <i>验证码</i>
         <label>
-          <input type="text" [(ngModel)]="model.captca"
-                 placeholder="验证码" name="captca"
+          <input type="text" name="captca"
+                 placeholder="验证码" [(ngModel)]="model.captca" #captca="ngModel"
+                 required
           >
         </label></div>
       <img [src]="codeImgSrc" (click)="getCaptca()" alt="获取">
+    </div>
+    <div class="error"  [hidden]="captca.valid || captca.untouched">
+      <span *ngIf="captca?.errors?.required">验证码不能为空 {{captca.valid}}{{captca.untouched}}</span>
+      <span *ngIf="captca?.errors?.pattern">6位数字</span>
     </div>
   </div>
   <div class="form-grop">

@@ -14,4 +14,11 @@ export class UserService {
     // @ts-ignore
     return this.http.post<Result>(this.url + 'login', user);
   }
+  public register(param: any) {
+    // @ts-ignore
+    return this.http.post<Result>(this.url + 'register', param);
+  }
+  public existName(name: string) {
+    return this.http.post<Result<string>>(this.url + 'exist-name', {name});
+  }
 }

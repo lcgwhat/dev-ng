@@ -4,6 +4,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {UserModule} from './user/user.module';
+import {RxjsModule} from './rxjs/rxjs.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {UserModule} from './user/user.module';
     // 使用模板驱动表单
     // FormsModule,
     UserModule,
+    RxjsModule,
     AppRoutingModule
   ],
   providers: [],

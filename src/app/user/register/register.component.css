@@ -56,7 +56,7 @@ form button{
   top: 0;
   right: 1rem;
 }
-.code-group div{
+.code-group .ds{
   display: inline-block;
 }
 .code-group input{
