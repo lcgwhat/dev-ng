@@ -21,4 +21,8 @@ export class UserService {
   public existName(name: string) {
     return this.http.post<Result<string>>(this.url + 'exist-name', {name});
   }
+
+  public getSmsCode(phone: string) {
+    return this.http.get<Result<any>>(this.url + 'get-sms-code?phone=' + phone);
+  }
 }

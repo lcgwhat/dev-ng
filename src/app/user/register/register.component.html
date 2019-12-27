@@ -23,6 +23,16 @@
     </div>
   </div>
 
+  <div class="form-btn">
+    <input type="text" name="smsCode" [(ngModel)]="model.smsCode"
+                                   #smsCode="ngModel" required
+    >
+    <button  class="btn"  (click)="getSmsCode()">{{btnText}}</button>
+      <div class="error" [hidden]="smsCode?.valid || smsCode.untouched">
+        <span *ngIf="smsCode?.errors?.required">必填</span>
+      </div>
+  </div>
+
   <div class="code-group">
     <div class="ds">
       <div>
@@ -33,15 +43,18 @@
                  required
           >
         </label></div>
-      <img [src]="codeImgSrc" (click)="getCaptca()" alt="获取">
+      <img [src]="codeImgSrc" (click)="getSmsCode()" alt="获取" >
     </div>
     <div class="error"  [hidden]="captca.valid || captca.untouched">
       <span *ngIf="captca?.errors?.required">验证码不能为空 {{captca.valid}}{{captca.untouched}}</span>
       <span *ngIf="captca?.errors?.pattern">6位数字</span>
     </div>
   </div>
+
+
   <div class="form-grop">
-    <button>确定</button>
+    <button>同意协议并注册
+    </button>
   </div>
 
 </form>

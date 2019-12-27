@@ -12,4 +12,5 @@ export class RegisterService {
   public existName(name: string) {
     return this.http.post<Result<boolean>>(this.url + 'exist-name', name);
   }
+
 }
