@@ -1,60 +1,55 @@
-<form action="">
-  <div class="form-grop">
-    <i class="fa fa-address-book">用户名</i><label>
-    <input type="text" class="form-control" name="name" [ngModelOptions]="{updateOn: 'blur'}"
-           [(ngModel)]="model.name" required #name="ngModel" appPhoneValidator
-    >
-  </label>
-    <div class="error" [hidden]="name.valid || name.untouched">
-      <span *ngIf="name?.errors?.required">请输入用户名</span>
-      <span *ngIf="name?.errors?.existName">用户名已存在</span>
+<form (ngSubmit)="register()" #form="ngForm">
+
+  <!--电话号码：增加已存在的异步校验-->
+  <div class="form-group">
+    <input type="text" class="form-control"
+           name="phone" [(ngModel)]="model.phone"
+           #phone="ngModel" required pattern="1[3,5,7,8]\d{9}"
+           placeholder="请输入手机号">
+    <div class="error" [hidden]="phone.valid || phone.untouched">
+      <span *ngIf="phone?.errors?.required">请输入手机号</span>
+      <span *ngIf="phone?.errors?.pattern">手机号码格式不正确</span>
     </div>
   </div>
 
-  <div class="form-grop">
-    <i class="fa fa-camera-retro">密码</i><label>
-    <input type="password" class="form-control" placeholder="密码"
-           name="password"
-           [(ngModel)]="model.password"
-            required #password="ngModel">
-  </label>
+  <!--图形验证码-->
+  <div class="form-group">
+    <input type="text" class="form-control"
+           name="codeImg" [(ngModel)]="model.codeImg"
+           #codeImg="ngModel"
+           required pattern="[a-zA-Z0-9]{4}"
+           placeholder="图形验证码">
+    <div class="error" [hidden]="codeImg.valid || codeImg.untouched">
+      <span *ngIf="codeImg?.errors?.required">请输入图形验证码</span>
+      <span *ngIf="codeImg?.errors?.pattern">图形验证码格式不正确</span>
+    </div>
+  </div>
+
+  <!--短信验证码-->
+  <div class="form-group">
+    <input type="text" class="form-control"
+           name="codeSms" [(ngModel)]="model.codeSms"
+           #codeSms="ngModel"
+           required pattern="\d{6}"
+           placeholder="短信验证码">
+    <div class="error" [hidden]="codeSms.valid || codeSms.untouched">
+      <span *ngIf="codeSms?.errors?.required">请输入短信验证码</span>
+      <span *ngIf="codeSms?.errors?.pattern">短信验证码格式不正确</span>
+    </div>
+  </div>
+
+  <!--密码-->
+  <div class="form-group">
+    <input type="password" class="form-control"
+           #password="ngModel" required
+           name="password" [(ngModel)]="model.password"
+           placeholder="请输入密码">
     <div class="error" [hidden]="password.valid || password.untouched">
       <span *ngIf="password?.errors?.required">请输入密码</span>
     </div>
   </div>
 
-  <div class="form-btn">
-    <input type="text" name="smsCode" [(ngModel)]="model.smsCode"
-                                   #smsCode="ngModel" required
-    >
-    <button  class="btn"  (click)="getSmsCode()">{{btnText}}</button>
-      <div class="error" [hidden]="smsCode?.valid || smsCode.untouched">
-        <span *ngIf="smsCode?.errors?.required">必填</span>
-      </div>
-  </div>
-
-  <div class="code-group">
-    <div class="ds">
-      <div>
-        <i>验证码</i>
-        <label>
-          <input type="text" name="captca"
-                 placeholder="验证码" [(ngModel)]="model.captca" #captca="ngModel"
-                 required
-          >
-        </label></div>
-      <img [src]="codeImgSrc" (click)="getSmsCode()" alt="获取" >
-    </div>
-    <div class="error"  [hidden]="captca.valid || captca.untouched">
-      <span *ngIf="captca?.errors?.required">验证码不能为空 {{captca.valid}}{{captca.untouched}}</span>
-      <span *ngIf="captca?.errors?.pattern">6位数字</span>
-    </div>
-  </div>
-
-
-  <div class="form-grop">
-    <button>同意协议并注册
-    </button>
-  </div>
-
+  <button type="submit" class="btn btn-primary"
+          [disabled]="form.invalid">同意协议并注册
+  </button>
 </form>
