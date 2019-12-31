@@ -36,6 +36,7 @@
       <span *ngIf="codeSms?.errors?.required">请输入短信验证码</span>
       <span *ngIf="codeSms?.errors?.pattern">短信验证码格式不正确</span>
     </div>
+
   </div>
 
   <!--密码-->
@@ -52,4 +53,6 @@
   <button type="submit" class="btn btn-primary"
           [disabled]="form.invalid">同意协议并注册
   </button>
+
 </form>
+

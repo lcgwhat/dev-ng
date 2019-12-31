@@ -30,3 +30,15 @@ form button{
 .cb-group a{
   color: #999;
 }
+
+/*错误提示*/
+.error {
+  color: #f00;
+}
+input.ng-invalid.ng-dirty{
+  border: 1px solid #ff0000;
+}
+
+::selection{
+  background-color: #ff0000;
+}
