@@ -1,12 +1,24 @@
 <form>
   <div class="form-group">
     <input type="text" class="form-control"
-           name="phone" placeholder="请输入手机号">
+           name="phone" placeholder="请输入手机号"
+           [(ngModel)]="model.phone" required pattern="^1\d{10}$"
+           #phone="ngModel"
+    >
+    <div class="error" [hidden]="phone.valid || phone.untouched">
+      <span *ngIf="phone?.errors?.required">手机号码不能为空</span>
+    </div>
   </div>
 
   <div class="form-group">
     <input type="password" class="form-control"
-           name="password" placeholder="请输入密码">
+           name="password" placeholder="请输入密码"
+           [(ngModel)]="model.password" #password="ngModel"
+           required
+    >
+    <div class="error" [hidden]="password.valid || password.untouched">
+      <span *ngIf="password?.errors?.required">密码必须</span>
+    </div>
   </div>
 
   <div class="cb-group">
