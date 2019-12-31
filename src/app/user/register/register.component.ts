@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {RegisterService} from '../../service/register.service';
 import {UserService} from '../../service/user.service';
 import {interval} from 'rxjs';
 import {scan, take} from 'rxjs/operators';
 
 class RegisterUser {
-  public name: string;
+  public phone: string;
   public password: string;
-  public captca: string;
-  public smsCode: string;
+  public codeImg: string;
+  public codeSms: string;
 }
 @Component({
   selector: 'app-register',
@@ -27,11 +26,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  getCaptca() {
+  getCodeImg() {
   }
 
   getSmsCode() {
-    this.rs.getSmsCode(this.model.name).subscribe(
+    this.rs.getSmsCode(this.model.phone).subscribe(
       (result) => {
         if (result.code === 200) {
            // 获取成功，60s倒计时，警用按钮
@@ -54,26 +53,11 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  debounce(fn, delay) {
-    let timer   = null;
-
-    return function() {
-      const args = arguments;
-      const context = this;
-
-      if (timer) {
-        clearTimeout(timer);
-
-        // tslint:disable-next-line:only-arrow-functions
-        timer = setTimeout(function() {
-          fn.apply(context, args);
-        }, delay);
-      } else {
-        // tslint:disable-next-line:only-arrow-functions
-        timer = setTimeout(function() {
-          fn.apply(context, args);
-        }, delay);
+  register() {
+    this.rs.register(this.model).subscribe(
+      (result) => {
+        console.log(result);
       }
-    };
+    );
   }
 }
