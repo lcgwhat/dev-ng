@@ -10,7 +10,7 @@ import {LoginUser} from '../../login-user';
 })
 export class LoginComponent implements OnInit {
   model: LoginUser;
-  isShow = false;
+  isShow = true;
   constructor(private us: UserService) {
     this.model = new LoginUser('', '', false);
   }

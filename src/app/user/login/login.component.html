@@ -32,5 +32,5 @@
     <a href="">忘记密码</a>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!form.valid" >登录</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid || isShow" >登录</button>
 </form>
