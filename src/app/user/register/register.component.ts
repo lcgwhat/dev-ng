@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {interval} from 'rxjs';
 import {scan, take} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 class RegisterUser {
   public phone: string;
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   codeImgSrc = '';
   isDisable = false; // 开始禁用短信获取
   btnText: number|string = '获取短信验证码'; // 动态文字
-  constructor(private rs: UserService) {
+  constructor(private rs: UserService, private router: Router) {
     this.model = new RegisterUser();
   }
 
@@ -56,7 +57,15 @@ export class RegisterComponent implements OnInit {
   register() {
     this.rs.register(this.model).subscribe(
       (result) => {
-        console.log(result);
+        if (result.code === 200) {
+          alert('注册成功');
+          setTimeout(() => {
+            // @ts-ignore
+            this.router.navigate('user/login');
+          }, 200);
+        } else {
+          alert(result.message);
+        }
       }
     );
   }
