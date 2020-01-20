@@ -1,0 +1,39 @@
+<!--<p>-->
+<!--  <a routerLink="ucenter">ucenter</a>-->
+<!--  <a routerLink="course">course</a>-->
+<!--</p>-->
+<!--<input type="text" name="courseId" #courseId>-->
+<!--<button (click)="goToCourse(courseId.value)">查找</button>-->
+<!--<router-outlet></router-outlet>-->
+
+<div class="wrapper">
+  <!--顶部导航-->
+  <div class="top-nav">
+    <div class="wrap">
+      <a class="logo" href="http://www.kaikeba.com/"></a>
+      <ul class="nav-menu">
+        <li><a href>首页</a></li>
+        <li><a href>学吧</a></li>
+        <li><a href>APP</a></li>
+        <li><a href>关于我们</a></li>
+      </ul>
+      <div class="r-menu">
+        <div class="search-box">
+          <input type="text">
+        </div>
+        <div class="user-box">
+          <img src="http://kkbconsole2.kaikeba.com/statics/images/avatar_100_100.png"
+               class="user-avatar" width="100" height="100">
+          <div class="menu"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--内容区-->
+  <div class="content">
+    <div class="wrap">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

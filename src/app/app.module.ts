@@ -5,11 +5,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {UserModule} from './user/user.module';
 import {RxjsModule} from './rxjs/rxjs.module';
-
+import { HomeComponent } from './home/home.component';
+import {MainModule} from './main/main.module';
 
 @NgModule({
   declarations: [
-    AppComponent, // 声明组件才能正常使用
+    AppComponent,
+    HomeComponent, // 声明组件才能正常使用
   ],
   imports: [
     BrowserModule,
@@ -18,6 +20,7 @@ import {RxjsModule} from './rxjs/rxjs.module';
     // FormsModule,
     UserModule,
     RxjsModule,
+    MainModule,
     AppRoutingModule
   ],
   providers: [],
