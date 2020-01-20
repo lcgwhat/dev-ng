@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ucenter.component.css']
 })
 export class UcenterComponent implements OnInit {
+  isHidden = true;
 
   constructor() { }
 

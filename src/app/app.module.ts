@@ -7,11 +7,13 @@ import {UserModule} from './user/user.module';
 import {RxjsModule} from './rxjs/rxjs.module';
 import { HomeComponent } from './home/home.component';
 import {MainModule} from './main/main.module';
+import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, // 声明组件才能正常使用
+    HomeComponent,
+    NotFoundComponent, // 声明组件才能正常使用
   ],
   imports: [
     BrowserModule,
