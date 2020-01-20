@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-not-found',
   template: `
-    <p style="text-align: center">
-      页面找不到了-_-!
-    </p>
+    <h2 style="text-align: center">
+      页面找不到了 -_-!
+    </h2>
   `,
   styles: []
 })
